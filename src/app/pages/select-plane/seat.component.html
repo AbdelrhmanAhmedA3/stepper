@@ -1,0 +1,61 @@
+<p-card>
+  <ng-template pTemplate="title">Select Your plan</ng-template>
+  <ng-template pTemplate="subtitle">
+    You have the option monthly or yearly billing
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div class="d-flex justify-content-center">
+      <div class="d-flex flex-wrap gap-3">
+        <div class="flex align-items-center">
+          <p-radioButton
+            styleClass="d-none"
+            name="pizza"
+            value="Mushroom"
+            [(ngModel)]="ingredient"
+            inputId="ingredient2"
+          ></p-radioButton>
+          <label for="ingredient2" class="ml-2 lable-radio p-2 pe-3 border">
+            <figure class="mt-3 mb-2">
+              <img class="mb-4"
+              src="./../../../assets/images/icon-advanced.svg" />
+              <figcaption class="d-grid">
+                <span>Arcade</span>
+                <span>$9/mo</span>
+                <span>$9/yr</span>
+                <span>2 months free</span>
+              </figcaption>
+            </figure>
+          </label>
+        </div>
+
+        <div class="flex align-items-center">
+          <p-radioButton
+            styleClass="d-none"
+            name="pizza"
+            value="Pepper"
+            [(ngModel)]="ingredient"
+            inputId="ingredient3"
+          ></p-radioButton>
+          <label for="ingredient3" class="ml-2"></label>
+        </div>
+
+        <div class="flex align-items-center">
+          <p-radioButton
+            styleClass="d-none"
+            name="pizza"
+            value="Onion"
+            [(ngModel)]="ingredient"
+            inputId="ingredient4"
+          ></p-radioButton>
+          <label for="ingredient4" class="ml-2"></label>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="grid grid-nogutter justify-content-between">
+      <p-button label="Back" (onClick)="prevPage()"></p-button>
+      <p-button label="Next" (onClick)="nextPage()"></p-button>
+    </div>
+  </ng-template>
+</p-card>

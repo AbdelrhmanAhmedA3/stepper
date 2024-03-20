@@ -1,0 +1,39 @@
+.container-stepper nav ul {
+  padding-left: unset;
+  flex-direction: column;
+  margin-top: 3rem;
+  counter-reset: page;
+   li{
+    margin-bottom: 2rem;
+    position: relative;
+
+    a{
+      gap:1.5rem;
+      display: flex;
+      flex-direction: row;
+      width: 60%;
+      justify-content: space-between;
+      background-color: transparent;
+      & span:not(:last-child){
+        margin-bottom: 5px;
+      }
+      span:last-child{
+        flex-grow: 1;
+        color: white;
+        position: relative;
+        counter-increment: page;
+        &::before {
+          content: 'Step ' counter(page);
+          position: absolute;
+          bottom: 70%;
+          left: 0;
+        color: rgba(255, 255, 255, 0.356);
+
+        }
+      }
+    }
+    &::before{
+      border: none;
+    }
+  }
+}

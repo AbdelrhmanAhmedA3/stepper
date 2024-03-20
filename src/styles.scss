@@ -1,0 +1,30 @@
+@use './style/index' as *;
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+/* Order */
+
+@font-face {
+  font-family: Ubuntu;
+  src: url(assets/fonts/Ubuntu/Ubuntu-Medium.ttf) format("Ubuntu-Medium"),
+       url(assets/fonts/Ubuntu/Ubuntu-Bold.ttf) format("Ubuntu-bold"),
+       url(assets/fonts/Ubuntu/Ubuntu-Regular.ttf) format("Regular-bold"),
+
+}
+
+/* Order */
+@layer reset, primeng;
+
+/* Reset CSS */
+@layer reset {
+ *{
+   font-family: Ubuntu;
+ }
+}
+
+
+
+
+a{
+  text-decoration: none;
+}

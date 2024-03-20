@@ -1,0 +1,90 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title">Personal Info</ng-template>
+    <ng-template pTemplate="subtitle">
+      please provide your name,email and phone number
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="p-fluid">
+        <div class="field">
+          <label for="firstname">Name</label>
+          <input
+            #firstname="ngModel"
+            id="firstname"
+            type="text"
+            required
+            pInputText
+            [(ngModel)]="personalInformation.firstname"
+            [ngClass]="{
+              'ng-dirty':
+                (firstname.invalid && submitted) ||
+                (firstname.dirty && firstname.invalid)
+            }"
+          />
+          <small
+            *ngIf="
+              (firstname.invalid && submitted) ||
+              (firstname.dirty && firstname.invalid)
+            "
+            class="p-error"
+            >Firstname is required.</small
+          >
+        </div>
+        <div class="field">
+          <label for="lastname">Email Address</label>
+          <input
+            #lastname="ngModel"
+            id="lastname"
+            type="text"
+            required
+            pInputText
+            [(ngModel)]="personalInformation.lastname"
+            [ngClass]="{
+              'ng-dirty':
+                (lastname.invalid && submitted) ||
+                (lastname.dirty && lastname.invalid)
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              (lastname.invalid && submitted) ||
+              (lastname.dirty && lastname.invalid)
+            "
+            >Lastname is required.</small
+          >
+        </div>
+        <div class="field">
+          <label for="phone">phone</label>
+          <p-inputMask
+            #phone="ngModel"
+            id="phone"
+            [required]="true"
+            mask="(+20) 1124256559"
+            placeholder="(+20) 1124256559"
+            [(ngModel)]="personalInformation.phone"
+            [ngClass]="{
+              'ng-dirty':
+                (phone.invalid && submitted) || (phone.dirty && phone.invalid)
+            }"
+          >
+        </p-inputMask>
+          <small
+            class="p-error"
+            *ngIf="(phone.invalid && submitted) || (phone.dirty && phone.invalid)"
+            >Phone is required.</small
+          >
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="d-flex justify-content-end">
+        <p-button
+          styleClass="rounded-3"
+          label="Next"
+          (onClick)="nextPage()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
