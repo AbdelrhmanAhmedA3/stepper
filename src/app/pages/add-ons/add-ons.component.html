@@ -1,1 +1,98 @@
-<p>add-ons works!</p>
+<p-card>
+  <ng-template pTemplate="title"><h1>Pick add-ons</h1></ng-template>
+  <ng-template pTemplate="subtitle">
+    Add-ons help enhance your gaming experience.
+  </ng-template>
+  <ng-template pTemplate="content">
+    <form [formGroup]="form" (ngSubmit)="nextPage()">
+      <section class="col-xl-6 d-flex flex-column gap-3">
+        <fieldset class="flex align-items-center">
+          <label
+            class="lable py-2 px-3 border w-100 d-flex gap-2 rounded-3"
+            for="chkbox1"
+          >
+            <p-checkbox
+              inputId="chkbox1"
+              name="Online "
+              value="Online "
+              formControlName="Online"
+            ></p-checkbox>
+            <article class="d-flex flex-grow-1">
+              <div class="col-9 d-grid">
+                <span> Online service </span>
+                <span> Access to multiplayer games </span>
+              </div>
+              <div class="col-3 d-flex justify-content-end align-items-center">
+                <span class="text-darkblue"> +$5/mo </span>
+                <!-- <span class="text-darkblue">
+              +$10/yr
+            </span> -->
+              </div>
+            </article>
+          </label>
+        </fieldset>
+        <fieldset class="flex align-items-center">
+          <label
+            class="lable py-2 px-3 border w-100 d-flex gap-2 rounded-3"
+            for="chkbox2"
+          >
+            <p-checkbox
+              inputId="chkbox2"
+              name="Larger"
+              value="Larger"
+              formControlName="Larger"
+            ></p-checkbox>
+            <article class="d-flex flex-grow-1">
+              <div class="col-9 d-grid">
+                <span> Larger storage </span>
+                <span> Exstra 1TB of cloud save </span>
+              </div>
+              <div class="col-3 d-flex justify-content-end align-items-center">
+                <span class="text-darkblue"> +$2/mo </span>
+                <!-- <span class="text-darkblue">
+            +$20/yr
+          </span> -->
+              </div>
+            </article>
+          </label>
+        </fieldset>
+        <fieldset class="flex align-items-center">
+          <label
+            class="lable py-2 px-3 border w-100 d-flex gap-2 rounded-3"
+            for="chkbox3"
+          >
+            <p-checkbox
+              inputId="chkbox3"
+              name="profile"
+              value="profile"
+              formControlName="profile"
+            ></p-checkbox>
+            <article class="d-flex flex-grow-1">
+              <div class="col-9 d-grid">
+                <span> Customizable profile </span>
+                <span> Custom theme to your profile </span>
+              </div>
+              <div class="col-3 d-flex justify-content-end align-items-center">
+                <span class="text-darkblue"> +$2/mo </span>
+                <!-- <span class="text-darkblue">
+            +$20/yr
+          </span> -->
+              </div>
+            </article>
+          </label>
+        </fieldset>
+      </section>
+      <section class="d-flex mt-3 col-lg-11 col-xl-8 justify-content-between">
+        <p-button
+          styleClass="rounded-3 bg-transparent text-secondary border-0"
+          (onClick)="prevPage()"
+          >Go Back</p-button
+        >
+        <p-button type="submitted" styleClass="rounded-3 text-white  px-4"
+          >Next Step</p-button
+        >
+      </section>
+    </form>
+  </ng-template>
+
+</p-card>

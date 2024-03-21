@@ -1,61 +1,137 @@
 <p-card>
-  <ng-template pTemplate="title">Select Your plan</ng-template>
+  <ng-template pTemplate="title"><h1>Select Your plan</h1></ng-template>
   <ng-template pTemplate="subtitle">
-    You have the option monthly or yearly billing
+    You have the option monthly or yearly billing.
   </ng-template>
   <ng-template pTemplate="content">
-    <div class="d-flex justify-content-center">
-      <div class="d-flex flex-wrap gap-3">
-        <div class="flex align-items-center">
-          <p-radioButton
-            styleClass="d-none"
-            name="pizza"
-            value="Mushroom"
-            [(ngModel)]="ingredient"
-            inputId="ingredient2"
-          ></p-radioButton>
-          <label for="ingredient2" class="ml-2 lable-radio p-2 pe-3 border">
-            <figure class="mt-3 mb-2">
-              <img class="mb-4"
-              src="./../../../assets/images/icon-advanced.svg" />
-              <figcaption class="d-grid">
-                <span>Arcade</span>
-                <span>$9/mo</span>
-                <span>$9/yr</span>
-                <span>2 months free</span>
-              </figcaption>
-            </figure>
-          </label>
-        </div>
+    <form [formGroup]="form" (ngSubmit)="nextPage()">
+      <section class="d-flex justify-content-center justify-content-md-start">
+        <div
+          class="d-flex flex-wrap flex-lg-nowrap gap-4 justify-content-center col-lg-11 col-xl-8 justify-content-lg-between"
+        >
+          <div class="d-flex flex-wrap gap-3">
+            <fieldset class="flex align-items-center">
+              <input
+                class="d-none"
+                formControlName="selectPlan"
+                value="arcade"
+                id="nameId"
+                type="radio"
+              />
+              <label
+                [ngClass]="{ 'lable-focus': Arcade }"
+                (click)="changeStyleArcade()"
+                for="nameId"
+                class="ml-2 lable-radio py-2 ps-3 pe-5 border rounded-4 shadow-sm"
+              >
+                <figure [ngClass]="{ 'pe-4': !checked }" class="mt-3 mb-2">
+                  <img
+                    class="mb-4"
+                    src="./../../../assets/images/icon-arcade.svg"
+                  />
+                  <figcaption class="d-grid">
+                    <span class="text-darkblue">Arcade</span>
+                    @if (!checked) {
+                    <span>$9/mo</span>
+                    } @if(checked){
+                    <span>$90/yr</span>
+                    <span>2 months free</span>
+                    }
+                  </figcaption>
+                </figure>
+              </label>
+            </fieldset>
 
-        <div class="flex align-items-center">
-          <p-radioButton
-            styleClass="d-none"
-            name="pizza"
-            value="Pepper"
-            [(ngModel)]="ingredient"
-            inputId="ingredient3"
-          ></p-radioButton>
-          <label for="ingredient3" class="ml-2"></label>
-        </div>
+            <fieldset class="flex align-items-center">
+              <input
+                class="d-none"
+                formControlName="selectPlan"
+                value="advanced"
+                id="emailId"
+                type="radio"
+              />
+              <label
+                [ngClass]="{ 'lable-focus': Advanced }"
+                (click)="changeStyleAdvanced()"
+                for="emailId"
+                class="ml-2 lable-radio py-2 ps-3 pe-5 border rounded-4 shadow-sm"
+              >
+                <figure [ngClass]="{ 'pe-1': !checked }" class="mt-3 mb-2">
+                  <img
+                    class="mb-4"
+                    src="./../../../assets/images/icon-advanced.svg"
+                  />
+                  <figcaption class="d-grid">
+                    <span class="text-darkblue">Advanced</span>
+                    @if (!checked) {
+                    <span>$12/mo</span>
+                    } @if(checked){
+                    <span>$120/yr</span>
+                    <span>2 months free</span>
+                    }
+                  </figcaption>
+                </figure>
+              </label>
+            </fieldset>
 
-        <div class="flex align-items-center">
-          <p-radioButton
-            styleClass="d-none"
-            name="pizza"
-            value="Onion"
-            [(ngModel)]="ingredient"
-            inputId="ingredient4"
-          ></p-radioButton>
-          <label for="ingredient4" class="ml-2"></label>
+            <fieldset class="flex align-items-center">
+              <input
+                class="d-none"
+                formControlName="selectPlan"
+                value="pro"
+                id="phoneId"
+                type="radio"
+              />
+              <label
+                [ngClass]="{ 'lable-focus': Pro }"
+                (click)="changeStylePro()"
+                for="phoneId"
+                class="ml-2 lable-radio py-2 ps-3 pe-5 border rounded-4 shadow-sm"
+              >
+                <figure [ngClass]="{ 'pe-4': !checked }" class="mt-3 mb-2">
+                  <img
+                    class="mb-4"
+                    src="./../../../assets/images/icon-pro.svg"
+                  />
+                  <figcaption class="d-grid">
+                    <span class="text-darkblue">Pro</span>
+                    @if (!checked) {
+                    <span>$15/mo</span>
+                    } @if(checked){
+                    <span>$150/yr</span>
+                    <span>2 months free</span>
+                    }
+                  </figcaption>
+                </figure>
+              </label>
+            </fieldset>
+          </div>
         </div>
-      </div>
-    </div>
-  </ng-template>
-  <ng-template pTemplate="footer">
-    <div class="grid grid-nogutter justify-content-between">
-      <p-button label="Back" (onClick)="prevPage()"></p-button>
-      <p-button label="Next" (onClick)="nextPage()"></p-button>
-    </div>
+      </section>
+      <section class="mt-3 row">
+        <article class="col-lg-11 col-xl-8  bg-primary-subtle d-flex gap-4 justify-content-center  align-items-center rounded-2 ">
+          <span  [ngClass]="checked ? 'text-secondary' : 'text-darkblue'">Monthly</span>
+          <fieldset>
+            <p-inputSwitch
+            (click)="changeLableColor()"
+            formControlName="radio"
+            styleClass="mt-2 input-switch" ></p-inputSwitch>
+          </fieldset>
+          <span [ngClass]="checked ? 'text-darkblue' : 'text-secondary'">yearly</span>
+        </article>
+      </section>
+      <section class="d-flex mt-3 col-lg-11 col-xl-8 justify-content-between">
+
+          <p-button
+            styleClass="rounded-3 mt-3 bg-transparent text-secondary border-0"
+            (onClick)="prevPage()"
+            >Go Back</p-button
+          >
+          <p-button styleClass="rounded-3 mt-3" type="submitted"
+            >Next Step</p-button
+          >
+
+      </section>
+    </form>
   </ng-template>
 </p-card>

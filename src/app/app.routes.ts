@@ -20,6 +20,8 @@ export const routes: Routes = [
     .then(c=> c.AddOnsComponent)},
     { path: 'summary', loadComponent:()=> import('./pages/summary/summary.component')
     .then(c=> c.SummaryComponent)},
+    { path: 'thank-you', loadComponent:()=> import('./pages/thank-you/thank-you.component')
+    .then(c=> c.ThankYouComponent)}
 ]
 
 }

@@ -37,3 +37,9 @@
     }
   }
 }
+
+@media only all and (max-width: 920px) {
+  .container-stepper nav ul li a {
+    flex-direction: column;
+  }
+}

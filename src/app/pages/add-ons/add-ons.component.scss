@@ -1,0 +1,15 @@
+label{
+  &:hover{
+    border-color: darkblue !important;
+    background-color: rgba(135, 206, 250, 0.067);
+  }
+}
+
+.text-darkblue{
+  color: darkblue;
+}
+
+.lable-focus{
+  border-color: darkblue !important;
+  background-color: rgba(135, 206, 250, 0.067);
+}

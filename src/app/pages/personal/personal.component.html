@@ -1,90 +1,54 @@
-<div class="stepsdemo-content">
-  <p-card>
-    <ng-template pTemplate="title">Personal Info</ng-template>
-    <ng-template pTemplate="subtitle">
-      please provide your name,email and phone number
-    </ng-template>
-    <ng-template pTemplate="content">
-      <div class="p-fluid">
-        <div class="field">
-          <label for="firstname">Name</label>
-          <input
-            #firstname="ngModel"
-            id="firstname"
-            type="text"
-            required
-            pInputText
-            [(ngModel)]="personalInformation.firstname"
-            [ngClass]="{
-              'ng-dirty':
-                (firstname.invalid && submitted) ||
-                (firstname.dirty && firstname.invalid)
-            }"
-          />
-          <small
-            *ngIf="
-              (firstname.invalid && submitted) ||
-              (firstname.dirty && firstname.invalid)
-            "
-            class="p-error"
-            >Firstname is required.</small
+<p-card>
+  <ng-template pTemplate="title"><h1>Personal Info</h1></ng-template>
+  <ng-template pTemplate="subtitle">
+    <small> please provide your name,email and phone number</small>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <form [formGroup]="form" (ngSubmit)="nextPage()">
+      <fieldset class="d-grid gap-2">
+        <label for="username">Name</label>
+        <input
+          class="w-75"
+          formControlName="name"
+          pInputText
+          id="username"
+          aria-describedby="username-help"
+        />
+        <!-- <small
+          ng-dirty
+         id="username-help">Enter your username to reset your password.</small> -->
+      </fieldset>
+      <fieldset class="d-grid gap-2">
+        <label for="email">Email Address</label>
+        <input
+          class="w-75"
+          formControlName="email"
+          pInputText
+          id="email"
+          aria-describedby="email-help"
+        />
+        <!-- <small id="email-help">Enter your email to reset your password.</small> -->
+      </fieldset>
+      <fieldset class="d-grid gap-2">
+        <label for="email">Phone number</label>
+        <input
+          class="w-75"
+          formControlName="phone"
+          pInputText
+          pKeyFilter="num"
+          id="email"
+          aria-describedby="email-help"
+        />
+        <!-- <small id="email-help">Enter your email to reset your password.</small> -->
+      </fieldset>
+      <section class="d-flex mt-3 col-lg-11 col-xl-8 justify-content-end">
+        <div class=" text-end">
+          <p-button styleClass="rounded-3 mt-3" type="submitted"
+            >Next Step</p-button
           >
         </div>
-        <div class="field">
-          <label for="lastname">Email Address</label>
-          <input
-            #lastname="ngModel"
-            id="lastname"
-            type="text"
-            required
-            pInputText
-            [(ngModel)]="personalInformation.lastname"
-            [ngClass]="{
-              'ng-dirty':
-                (lastname.invalid && submitted) ||
-                (lastname.dirty && lastname.invalid)
-            }"
-          />
-          <small
-            class="p-error"
-            *ngIf="
-              (lastname.invalid && submitted) ||
-              (lastname.dirty && lastname.invalid)
-            "
-            >Lastname is required.</small
-          >
-        </div>
-        <div class="field">
-          <label for="phone">phone</label>
-          <p-inputMask
-            #phone="ngModel"
-            id="phone"
-            [required]="true"
-            mask="(+20) 1124256559"
-            placeholder="(+20) 1124256559"
-            [(ngModel)]="personalInformation.phone"
-            [ngClass]="{
-              'ng-dirty':
-                (phone.invalid && submitted) || (phone.dirty && phone.invalid)
-            }"
-          >
-        </p-inputMask>
-          <small
-            class="p-error"
-            *ngIf="(phone.invalid && submitted) || (phone.dirty && phone.invalid)"
-            >Phone is required.</small
-          >
-        </div>
-      </div>
-    </ng-template>
-    <ng-template pTemplate="footer">
-      <div class="d-flex justify-content-end">
-        <p-button
-          styleClass="rounded-3"
-          label="Next"
-          (onClick)="nextPage()"
-        ></p-button>
-      </div>
-    </ng-template>
-  </p-card>
-</div>
+
+      </section>
+    </form>
+  </ng-template>
+</p-card>

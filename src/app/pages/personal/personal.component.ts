@@ -1,38 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TicketService } from '../../core/services/personal-information.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
-import { InputMaskModule } from 'primeng/inputmask';
+import { KeyFilterModule } from 'primeng/keyfilter';
 @Component({
   selector: 'app-personal',
   standalone: true,
-  imports: [FormsModule,CommonModule,ButtonModule,CardModule,InputTextModule,InputMaskModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    CardModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    KeyFilterModule,
+  ],
   templateUrl: './personal.component.html',
-  styleUrl: './personal.component.scss'
+  styleUrl: './personal.component.scss',
 })
-export class PersonalComponent implements OnInit {
-  personalInformation: any;
+export class PersonalComponent {
+  form: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+  });
 
-  submitted: boolean = false;
-
-  constructor(public pService: TicketService, private router: Router) {}
-
-  ngOnInit() {
-      this.personalInformation = this.pService.getTicketInformation().personalInformation;
-  }
-
+  constructor(private router: Router) {}
   nextPage() {
-      if (this.personalInformation.firstname && this.personalInformation.lastname && this.personalInformation.phone) {
-          this.pService.ticketInformation.personalInformation = this.personalInformation;
-          this.router.navigate(['/home/seat']);
-
-          return;
-      }
-
-      this.submitted = true;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+    } else {
+      localStorage.setItem("personal", JSON.stringify(this.form.value));
+      this.router.navigate(['/home/seat']);
+    }
   }
 }

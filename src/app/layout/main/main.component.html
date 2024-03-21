@@ -1,5 +1,5 @@
-<section class="d-flex gap-5 vh-100 overflow-hidden p-3 container-fluid">
-  <section class="container-stepper">
+<section class="d-flex gap-5 vh-100 overflow-y-auto p-3 container-fluid">
+  <section class="container-stepper rounded-4">
     <p-steps
       [model]="items"
       [readonly]="false"
@@ -7,7 +7,9 @@
       (activeIndexChange)="onActiveIndexChange($event)"
     ></p-steps>
   </section>
-  <section class="flex-grow-1">
-    <router-outlet></router-outlet>
+  <section class="flex-grow-1 d-flex ">
+    <div class="col-11 m-auto">
+      <router-outlet></router-outlet>
+    </div>
   </section>
 </section>
